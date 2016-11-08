@@ -6,7 +6,7 @@ Create a .deb package suitable for \*buntu, Debian, Linux Mint.
 
 ### /opt/7linden-at-home/bin/7linden-at-home
 
-Script checks whether we are at home (by asking for routers ssh key fingerprints and comparing them with `/opt/7linden-at-home/data/host_keys`).
+(Bash-) Script checks whether we are at home (by asking for routers ssh key fingerprints and comparing them with `/opt/7linden-at-home/data/host_keys`).
 
 ### Package building
 
@@ -26,4 +26,4 @@ You are welcome, drop me a line and issue a Pull Request.
 
  * be more defensive
  * be more defensive, 2: escaping
- * set proper timeouts for the wget-call
+ * set proper timeouts for the keyscan-call

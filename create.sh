@@ -16,4 +16,5 @@ fpm -s dir\
     --depends diffutils\
     --license "GPLv3+"\
     --maintainer "felix.wolfsteller@gmail.com"\
+    --url        "https://github.com/ecovillage/7linden-at-home"\
     opt
