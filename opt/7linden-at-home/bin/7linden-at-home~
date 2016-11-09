@@ -9,8 +9,16 @@ set -e
 
 readonly CP_HOST="192.168.0.1"
 
+fifo="/tmp/$(basename $0)-$$"
+
 am_at_home() {
-  /usr/bin/ssh-keyscan -T1 "$CP_HOST" 2> /dev/null | sort | diff /opt/7linden-at-home/data/host_keys -
+  mkfifo "$fifo"
+  grep "ssh-rsa" /opt/7linden-at-home/data/host_keys 2> /dev/null > "$fifo" &
+  /usr/bin/ssh-keyscan -T1 -t rsa "$CP_HOST" 2> /dev/null | sort | \
+  diff "$fifo" - > /dev/null 2>&1
+  ret=$?
+  rm "$fifo"
+  return "$ret"
 }
 
 main() {
